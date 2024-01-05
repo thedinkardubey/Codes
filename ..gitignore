@@ -1,0 +1,31 @@
+# Ignore compiled files
+*.exe
+*.out
+*.class
+
+# Ignore build artifacts
+*.o
+*.so
+*.dll
+
+# Ignore generated files
+*.pyc
+__pycache__/
+
+# Ignore IDE-specific files and folders
+.vscode/
+.idea/
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Ignore web project-related files
+node_modules/
+dist/
+/build/
+
+# Ignore Python virtual environment
+venv/
