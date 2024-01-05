@@ -1,0 +1,3 @@
+class check{
+    int value;
+};
