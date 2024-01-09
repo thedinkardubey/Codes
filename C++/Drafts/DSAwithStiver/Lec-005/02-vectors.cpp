@@ -5,25 +5,24 @@
  * vector<dataType> vector'sName;
  */
 std::vector<int> marksOfFive; // Declaration
-void iteratePrint()
+void iteratePrint(std::vector<int> &bL)
 {
-    std::cout << "The vector marksOfFive is: "
-              << "< ";
-    for (std::vector<int>::iterator position = marksOfFive.begin(); position != marksOfFive.end(); position++)
+    std::cout << "The Vector is: "
+              << "[ ";
+    for (std::vector<int>::iterator position = bL.begin(); position != bL.end(); position++)
     {
         std::cout << (*position) << " ";
     }
-    std::cout << ">" << std::endl;
+    std::cout << "]" << std::endl;
 }
-void autoPrint()
+void autoPrint(std::vector<int> &bL)
 {
-    std::cout << "The vector marksOfFive is: "
-              << "< ";
-    for (auto position = marksOfFive.begin(); position != marksOfFive.end(); position++)
+    std::cout << "The Vector is: [ ";
+    for (auto it = bL.begin(); it != bL.end(); it++)
     {
-        std::cout << (*position) << " ";
+        std::cout << *(it) << " ";
     }
-    std::cout << ">" << std::endl;
+    std::cout << "]" << std::endl;
 }
 void explainVectors()
 {
@@ -49,7 +48,7 @@ void explainVectors()
     //    std::cout<<">"<<std::endl;
 
     //----Using auto keyword------
-    autoPrint();
+    autoPrint(marksOfFive);
 
     std::cout << "Begin: " << *(marksOfFive.begin()) << std::endl;
     std::cout << "Rbegin: " << *(marksOfFive.rbegin()) << std::endl;
@@ -70,72 +69,44 @@ void explainVectors()
 
     //----Deletion in Vectors----
     marksOfFive.erase(marksOfFive.begin());
-    autoPrint();
+    autoPrint(marksOfFive);
     marksOfFive.erase(marksOfFive.begin() + 1, marksOfFive.begin() + 3);
     //----Printing after Deletion to check----
-    iteratePrint();
+    iteratePrint(marksOfFive);
     marksOfFive.clear();
-    autoPrint();
+    std::cout<<"The vector marksOfFive after clear operation"<<std::endl;
+    autoPrint(marksOfFive);
 
     //----Insertion----
 
-    std::vector<int> firstVector(2, 100);         // this means < 100 100 >
-    std::vector<int> secondVector(2, 69);          // this mean < 6 69 >
+    std::vector<int> firstVector(2, 100);        // this means < 100 100 >
+    std::vector<int> secondVector(2, 69);        // this mean < 6 69 >
     firstVector.insert(firstVector.begin(), 69); // this means < 69 100 100 >
-    std::cout << "The vector firstVector is: "
-              << "< ";
-    for (std::vector<int>::iterator ps = firstVector.begin(); ps != firstVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
+    std::cout << "The vector firstVector is: ";
+    autoPrint(secondVector);
     firstVector.insert(firstVector.begin(), 3, 69); // this means < 69 69 69 100 100 >
-    std::cout << ">" << std::endl;
-    std::cout << "The vector firstVector is: "
-              << "< ";
-    for (std::vector<int>::iterator ps = firstVector.begin(); ps != firstVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
-    std::cout << ">" << std::endl;
+    std::cout << std::endl;
+    std::cout << "The vector firstVector is: ";
+    autoPrint(firstVector);
     //----Copy one vector to other----
 
     secondVector.insert(secondVector.begin(), firstVector.begin(), firstVector.end() - 2); // insert(position, from, to)
-    std::cout << "The vector secondVector is after copying content from firstVector: "
-              << "< ";
-    for (std::vector<int>::iterator ps = secondVector.begin(); ps != secondVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
-    std::cout << ">" << std::endl;
+    std::cout << "The vector secondVector is after copying content from firstVector: ";
+    autoPrint(secondVector);
 
     std::cout << "Size of secondVector is: " << secondVector.size() << std::endl;
 
     //----Swaping----
     secondVector.swap(firstVector);
-    std::cout << "The vector firstVector is after swap: "
-              << "< ";
-    for (std::vector<int>::iterator ps = firstVector.begin(); ps != firstVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
-    std::cout << ">" << std::endl;
-    std::cout << "The vector secondVector is after swap content from firstVector: "
-              << "< ";
-    for (std::vector<int>::iterator ps = secondVector.begin(); ps != secondVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
-    std::cout << ">" << std::endl;
+    std::cout << "The vector firstVector is after swap: ";
+    autoPrint(firstVector);
+    std::cout << "The vector secondVector is after swap content from firstVector: ";
+    autoPrint(secondVector);
 
     //----pop operation----
     firstVector.pop_back();
-    std::cout << "The vector firstVector is after Pop operation: "
-              << "< ";
-    for (std::vector<int>::iterator ps = firstVector.begin(); ps != firstVector.end(); ps++)
-    {
-        std::cout << *(ps) << " ";
-    }
-    std::cout << ">" << std::endl;
+    std::cout << "The vector firstVector is after Pop operation: ";
+    autoPrint(firstVector);
     std::cout << "Empty: " << firstVector.empty() << std::endl;
 }
 int main()
